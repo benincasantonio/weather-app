@@ -1,0 +1,11 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "a simple app in node.js created during my training",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "author": "Antonio Benincasa",
+  "license": "ISC"
+}
