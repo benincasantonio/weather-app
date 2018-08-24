@@ -7,5 +7,13 @@
     "test": "node index"
   },
   "author": "Antonio Benincasa",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benincasantonio/weather-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benincasantonio/weather-app/issues"
+  },
+  "homepage": "https://github.com/benincasantonio/weather-app#readme"
 }
