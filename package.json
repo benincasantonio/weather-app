@@ -2,9 +2,9 @@
   "name": "weather-app",
   "version": "1.0.0",
   "description": "a simple app in node.js created during my training",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node index"
+    "test": "node app"
   },
   "author": "Antonio Benincasa",
   "license": "ISC",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/benincasantonio/weather-app/issues"
   },
-  "homepage": "https://github.com/benincasantonio/weather-app#readme"
+  "homepage": "https://github.com/benincasantonio/weather-app#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
