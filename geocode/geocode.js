@@ -1,7 +1,8 @@
 const request = require("request");
 
-function geocodeAddress(address, callback) {
+function geocodeAddress(address) {
   let addressURI = encodeURIComponent(address);
+  return new Promise((resolve, reject) => {
   request(
     {
       url: `https://www.mapquestapi.com/geocoding/v1/address?key=hO3jIfrrkAlVg7tdAd8XXVAmGYYzor6l&location=${addressURI}`,
@@ -9,7 +10,7 @@ function geocodeAddress(address, callback) {
     },
     (error, response, body) => {
       if (error) {
-        callback("Unable to reach the Server");
+        reject("Unable to reach the Server");
       } else {
         if (body.results.length > 0) {
           for (let location of body.results) {
@@ -17,14 +18,14 @@ function geocodeAddress(address, callback) {
               address: location.locations[0].street,
               geometry: location.locations[0].latLng
             };
-            callback(undefined, address);
+            resolve(address);
           }
         }else {
-            callback('No Result')
+            reject('No Result');
         }
       }
-    }
-  );
+    });
+  });
 }
 
 module.exports.geocodeAddress = geocodeAddress;

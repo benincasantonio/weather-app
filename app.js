@@ -13,22 +13,20 @@ const argv = yargs
   })
   .help()
   .alias("help", "h").argv;
-geocode.geocodeAddress(argv["a"], (errorMessage, results) => {
-  if (errorMessage) {
-    console.log(errorMessage);
-  } else {
-    weather.getWeather(
-      results.geometry.lat,
-      results.geometry.lng,
-      (errorMessage, results) => {
-        if (errorMessage) {
-          console.log(errorMessage);
-        }else {
-          console.log(JSON.stringify(results));
-        }
-      }
-    );
+geocode
+  .geocodeAddress(argv["a"])
+  .then(results => {
+    console.log("Geocode", JSON.stringify(results, undefined, 2));
 
-    console.log(JSON.stringify(results, undefined, 2));
-  }
-});
+    weather
+      .getWeather(results.geometry.lat, results.geometry.lng)
+      .then(res => {
+        console.log(`Weather: ${JSON.stringify(res, undefined, 2)}`);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  })
+  .catch(error => {
+    console.error(error);
+  });
